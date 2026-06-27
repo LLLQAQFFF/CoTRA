@@ -1,0 +1,6 @@
+# CoTRA runtime dependencies.
+# The pipeline itself depends only on the OpenAI-compatible client and
+# scikit-learn (for the scope-adjudication decision tree). Everything else is
+# the Python standard library.
+openai>=1.0
+scikit-learn>=1.3

@@ -1,0 +1,27 @@
+# --- secrets / local config (never commit API keys) ---
+llm_config.local.py
+llm_config.e2e.py
+.env
+
+# --- caches ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.llm_judge_cache/
+.repo_cache/
+.repo_cache*/
+
+# --- run outputs / logs (large, regenerated) ---
+outputs/
+results/
+reports/
+*.log
+
+# --- data (provided separately; see docs/data_format.md) ---
+data/
+
+# --- editor / OS ---
+.DS_Store
+.idea/
+.vscode/
