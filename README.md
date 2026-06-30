@@ -1,5 +1,9 @@
 # CoTRA: Contribution-Tracked Risk Auditing
 
+**Paper:** CoTRA: Contribution-Tracked Risk Auditing for the Trajectories of LLM Coding Agents
+
+![CoTRA framework](docs/assets/cotra_framework.png)
+
 Reference implementation of **CoTRA**, a framework for auditing the trajectories
 of LLM coding agents. Instead of an opaque holistic judgment, CoTRA grounds every
 score in repository evidence — replayed edits, affected code regions, and whether
@@ -83,36 +87,6 @@ python scripts/reproduce_tables.py \
 For a single method/run, `scripts/eval_predictions.py` writes a full
 prediction-vs-gold report (scope kappa, exact agreement, per-dimension Spearman,
 trajectory metrics, cost summary).
-
-## Main result (CoTRA-Bench, 100 trajectories, 4,303 action labels)
-
-Best quality value in each row is **bold**. M1–M3 are quality; M4 is cost.
-
-| | B1 Evid+rules | B2 ProcCtrlBench | B3 Evid+LLM | B4 E2E judge | **CoTRA** |
-|---|---:|---:|---:|---:|---:|
-| **M1 Action scope agreement** | | | | | |
-| &nbsp;&nbsp;Cohen's κ | 0.330 | 0.431 | 0.338 | 0.508 | **0.599** |
-| &nbsp;&nbsp;Exact agreement | 0.459 | 0.613 | 0.468 | 0.644 | **0.744** |
-| **M2 Severity ranking (Spearman ρ)** | | | | | |
-| &nbsp;&nbsp;Task progress | 0.466 | 0.375 | 0.474 | **0.770** | 0.561 |
-| &nbsp;&nbsp;Technical debt | 0.105 | 0.274 | 0.320 | **0.486** | 0.400 |
-| &nbsp;&nbsp;Fragility | 0.225 | 0.220 | 0.375 | **0.572** | 0.391 |
-| &nbsp;&nbsp;Regression reach | 0.290 | 0.272 | 0.294 | **0.646** | 0.555 |
-| &nbsp;&nbsp;Action short-sightedness | 0.247 | 0.314 | 0.279 | 0.264 | **0.496** |
-| &nbsp;&nbsp;Trajectory short-sightedness | 0.178 | 0.214 | 0.281 | 0.408 | **0.410** |
-| **M3 Defect detection (F1)** | | | | | |
-| &nbsp;&nbsp;Broad rewriting | 0.877 | 0.871 | 0.870 | 0.200 | **0.881** |
-| &nbsp;&nbsp;Stray artifact | 0.732 | 0.411 | 0.732 | **0.865** | 0.838 |
-| &nbsp;&nbsp;Error abstraction | 0.181 | 0.000 | 0.257 | 0.092 | **0.268** |
-| **M4 Cost** | | | | | |
-| &nbsp;&nbsp;API cost (USD) | 0 | 0 | 1.0 | 19.9 | 2.9 |
-
-CoTRA gives the best action-scope agreement (M1) and the best aggregate
-short-sightedness scores (M2, action/trajectory), and is competitive on defect
-detection (M3). The end-to-end judge (B4) is stronger on isolated semantic
-dimensions but costs ~7× more: CoTRA matches its scope agreement at roughly
-**85% lower API cost** (M4), and stays stable on long trajectories where
-holistic judging degrades.
 
 ## Repository layout
 

@@ -22,5 +22,4 @@ vendored here. To reproduce B2:
    `scripts/eval_predictions.py` exactly like the other methods.
 
 We evaluate B2 from its **uncalibrated** outputs, so that it does not borrow
-CoTRA's learned scope mapping. The published B2 scope agreement is
-Cohen's kappa = 0.431.
+CoTRA's learned scope mapping.
